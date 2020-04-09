@@ -39,10 +39,14 @@ export class Channel {
 export type BinaryType = 'arraybuffer' | 'blob';
 export type ConnectionState = 'connecting' | 'open' | 'closing' | 'closed';
 
+export interface Transport {
+  new(endPoint: string): WebSocket | LongPoll
+}
+
 export interface SocketConnectOption {
   binaryType: BinaryType;
   params: object | (() => object);
-  transport: string;
+  transport: Transport;
   timeout: number;
   heartbeatIntervalMs: number;
   longpollerTimeout: number;

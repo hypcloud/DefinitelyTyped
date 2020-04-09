@@ -1,9 +1,10 @@
-import { Socket, Channel, Presence } from 'phoenix';
+import { Socket, Channel, LongPoll, Presence } from 'phoenix';
 
 function test_socket() {
   const socket = new Socket('/ws', {
       binaryType: 'arraybuffer',
       params: { userToken: '123' },
+      transport: LongPoll;
       reconnectAfterMs: tries => 1000,
       rejoinAfterMs: tries => 1000,
   });
